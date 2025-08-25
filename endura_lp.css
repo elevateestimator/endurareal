@@ -638,3 +638,20 @@ body.dark{ padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   .service-areas{ padding:6px 0; }
 }
 
+/* === iOS: prevent zoom on input focus (no layout changes) === */
+/* Scope to the estimate/contact form only */
+@supports (-webkit-touch-callout: none) {
+  #estimate input,
+  #estimate textarea,
+  #estimate select {
+    font-size: 16px !important;
+  }
+  /* Keep placeholder text readable at the same size */
+  #estimate input::placeholder,
+  #estimate textarea::placeholder {
+    font-size: 16px;
+  }
+}
+
+/* Prevent unintended text auto-scaling on iOS */
+html { -webkit-text-size-adjust: 100%; }
