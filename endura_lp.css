@@ -655,3 +655,381 @@ body.dark{ padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 
 /* Prevent unintended text auto-scaling on iOS */
 html { -webkit-text-size-adjust: 100%; }
+
+/* --- Anchor offset so sticky header never hides the form --- */
+#estimate { scroll-margin-top: 120px; }
+@media (max-width: 980px){
+  #estimate { scroll-margin-top: 132px; }
+}
+
+/* --- Subtle pulse highlight when auto-scrolling to the form --- */
+#estimate.focus-pulse .form-card{ position: relative; }
+#estimate.focus-pulse .form-card::after{
+  content:""; position:absolute; inset:-2px; border-radius:20px;
+  box-shadow: 0 0 0 0 rgba(79,195,255,.55);
+  animation: enduraPulseRing 1.2s ease-out 2;
+  pointer-events:none;
+}
+@keyframes enduraPulseRing{
+  0%   { box-shadow: 0 0 0 0 rgba(79,195,255,.55); }
+  100% { box-shadow: 0 0 0 28px rgba(79,195,255,0); }
+}
+
+/* Respect reduced motion (no page-wide animation flash) */
+@media (prefers-reduced-motion: reduce){
+  header.lp-header, main > section, footer.lp-footer, #sticky-free-estimate{
+    opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important;
+  }
+}
+
+/* --- Hero: row 2 CTA --- */
+.hero-ctas-row2{ margin-top: 8px; }
+.hero-ctas-row2 .button{ min-width: 220px; }
+
+/* --- Review Flywheel --- */
+.review-flywheel{
+  margin-top: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,.02);
+  border: var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.rf-marquee{
+  display: flex;
+  width: max-content;
+  animation: rf-scroll 42s linear infinite;
+}
+.rf-group{
+  display:flex; gap: 14px;
+  padding: 10px 14px;
+}
+.rf-quote{
+  display:inline-block;
+  white-space: nowrap;
+  padding:.55rem .8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.02);
+  font-weight: 800; letter-spacing:.01em; color:#e9edf1;
+}
+.review-flywheel:hover .rf-marquee{ animation-play-state: paused; }
+
+/* Seamless loop: second group repeats the first */
+@keyframes rf-scroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* one full group-width */
+}
+
+/* Small-screen readability */
+@media (max-width: 720px){
+  .rf-quote{ font-size:.95rem; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .rf-marquee{ animation: none !important; transform: none !important; }
+}
+/* ===== HERO spacing & media behavior (fix mobile gap + stretched photo) ===== */
+@media (max-width: 720px){
+  .hero.section{ padding: 28px 0 28px; }            /* tighten hero on phones */
+  .hero .hero-inner{ gap: 12px; }                    /* less gap = less empty area */
+  .hero .hero-media{ display: none; }                /* hide big hero image on phones */
+}
+/* Optionally keep the photo on tablets but cap its height. */
+@media (max-width: 1024px){
+  .hero .parallax-wrap{ aspect-ratio: 16 / 9; max-height: 420px; }
+}
+
+/* ===== HERO CTAs: unified stack (centered desktop & mobile) ===== */
+.hero-ctas.hero-ctas-stack{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+@media (max-width: 980px){
+  .hero-ctas.hero-ctas-stack{
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .hero-ctas.hero-ctas-stack .button{
+    width: min(420px, 100%);
+  }
+}
+
+/* ===== Review flywheel: centered, masked edges, no overflow ===== */
+.review-flywheel{
+  margin-top: 12px;
+  width: 100%;
+  max-width: var(--container);
+}
+.review-flywheel .rf-track{
+  position: relative;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: 14px;
+  background: rgba(255,255,255,.02);
+  box-shadow: var(--shadow-soft);
+  /* Fade the edges so quotes don't look cut */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+.review-flywheel .rf-marquee{
+  --rf-speed: 42s;
+  display: flex;
+  /* Two identical groups side-by-side → move exactly 50% for a perfect loop */
+  animation: rf-scroll var(--rf-speed) linear infinite;
+  will-change: transform;
+}
+.review-flywheel .rf-group{
+  flex: 0 0 auto;
+  display: inline-flex;
+  gap: 14px;
+  padding: 10px 14px;
+}
+.review-flywheel .rf-quote{
+  display:inline-block;
+  white-space: nowrap;
+  padding:.55rem .8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.02);
+  font-weight: 800;
+  letter-spacing:.01em;
+  color:#e9edf1;
+}
+.review-flywheel:hover .rf-marquee{ animation-play-state: paused; }
+
+@keyframes rf-scroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* scroll width of one group */
+}
+
+@media (max-width: 720px){
+  .review-flywheel{ margin-top: 8px; }
+  .review-flywheel .rf-quote{ font-size:.95rem; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .review-flywheel .rf-marquee{ animation: none !important; transform: none !important; }
+}
+
+/* === Remove legacy "cred" strip (safety if HTML isn't edited) === */
+.cred{ display:none !important; }
+
+/* === Center the two hero lines (sub + bullets) on all sizes === */
+.hero .sub{
+  text-align:center;
+  margin-left:auto; margin-right:auto;
+  max-width: 52ch; /* keeps it elegant */
+}
+
+/* We only have two bullet points — make a centered two‑column row on desktop,
+   then stack nicely on tablets/phones */
+.bullets{
+  justify-content:center;
+  justify-items:center;
+  text-align:center;
+  gap: 10px 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 720px;
+  margin: 14px auto;
+}
+.bullets li{
+  text-align:center;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+@media (max-width: 980px){
+  .bullets{ grid-template-columns: 1fr; }
+}
+
+/* === Mobile top: tighter header + hero, and hide the big photo earlier === */
+@media (max-width: 900px){
+  .hero .hero-media{ display:none !important; } /* prevent the overflowing/stretched image */
+}
+@media (max-width: 720px){
+  .header-inner{ min-height: 92px !important; }  /* shorter sticky header on phones */
+  .brand .logo{ height: 76px !important; }       /* scale logo to match */
+  .hero.section{ padding: 24px 0 28px !important; }
+  .hero .hero-inner{ gap: 10px !important; }
+  html, body{ overflow-x:hidden !important; }    /* belt-and-suspenders against sideways scroll */
+}
+/* ==== APPEND-ONLY PATCH — keep your existing 806 lines unchanged ==== */
+/* 1) Lock down the top layout on phones (iPhone horizontal scroll + hero overflow) */
+@media (max-width: 720px){
+  html, body { overflow-x: hidden !important; }
+  .container { padding-left: 16px !important; padding-right: 16px !important; }
+
+  .lp-header .header-inner {
+    min-height: 92px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .brand .logo { height: 76px !important; }
+  .header-right { display: none !important; } /* keeps header clean on small screens */
+
+  .hero .hero-inner { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .hero .hero-copy { text-align: center !important; }
+  .hero .hero-media { display: none !important; } /* avoids the large image pushing the layout sideways */
+
+  /* Center the short lines you asked for */
+  .hero .sub { 
+    text-align: center !important;
+    margin-left: auto; margin-right: auto;
+    max-width: 52ch;
+  }
+
+  /* Bullets: stack + center neatly on phones */
+  .bullets {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    margin-left: auto !important; margin-right: auto !important;
+    padding-left: 0 !important;
+  }
+  .bullets li {
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+}
+
+/* Hide big hero photo a bit earlier on tablets if it was causing overflow */
+@media (max-width: 900px){
+  .hero .hero-media { display: none !important; }
+}
+
+/* 2) Center the bullets as a tidy two‑column row on desktop/tablet */
+@media (min-width: 981px){
+  .hero .hero-copy { text-align: center; }          /* center the two hero lines on larger screens too */
+  .hero-ctas { justify-content: center; }
+  .bullets {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    justify-items: center;
+    margin: 14px auto;
+  }
+}
+
+/* 3) Keep sticky header from covering the form when you scroll to #estimate */
+#estimate { scroll-margin-top: 120px; }
+@media (max-width: 980px){ #estimate { scroll-margin-top: 132px; } }
+
+/* 4) Reserve safe space for your sticky estimate bar (if present) */
+body.dark { padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important; }
+
+/* 5) Remove the ★ ★ ★ ★ ★ strip without changing HTML */
+.cred { display: none !important; }
+
+/* --- ENDURA MOBILE/OFFSET FIX PACK — header/hero/reviews (append at end) --- */
+
+/* 0) Absolute “no horizontal scrollbars” across all devices */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+/* 1) Constrain all top containers evenly and keep them centered */
+.container,
+.header-inner,
+.hero .hero-inner,
+.proof .container,
+.benefits .container,
+.gallery .container,
+.process .container,
+.faq .container,
+.estimate .container {
+  box-sizing: border-box;
+  padding-left: clamp(16px, 4vw, 20px) !important;
+  padding-right: clamp(16px, 4vw, 20px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2) Hero: center the copy and CTAs on every breakpoint */
+.hero .hero-copy,
+.hero .sub,
+.hero .bullets,
+.hero .hero-ctas {
+  text-align: center !important;
+}
+.bullets {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 3) Reviews flywheel: isolate layout so it NEVER expands page width */
+.review-flywheel { overflow: clip; } /* modern, safer than hidden in WebKit */
+.review-flywheel .rf-track {
+  position: relative;
+  overflow: hidden !important;
+  contain: layout paint;              /* prevents child width from influencing page */
+  width: 100%;
+}
+.review-flywheel .rf-marquee {
+  display: flex;
+  will-change: transform;
+}
+.review-flywheel .rf-group { flex: 0 0 auto; }
+
+/* Mask edges only when supported (prevents oddities in older mobile Safari) */
+@supports (-webkit-mask-image: linear-gradient(to right, #000, #000)) {
+  .review-flywheel .rf-track{
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+}
+
+/* 4) Fixed background: remove horizontal inset to avoid rare x-overflow */
+.bg {
+  inset: -10% 0 -10% 0 !important; /* was -10% on left/right; set to 0 to kill x-bleed */
+}
+
+/* 5) Images & parallax wrappers: belt-and-suspenders no-bleed */
+.parallax-wrap { overflow: hidden !important; }
+img, svg, video { max-width: 100% !important; height: auto !important; }
+
+/* 6) Progress bar can’t cause overflow during width animation */
+.progress { overflow: hidden; }
+
+/* 7) Desktop “slight nudge” center lock if you saw a tiny right bias */
+@media (min-width: 981px){
+  .header-inner { justify-content: center !important; }
+  .brand { justify-content: center !important; }
+  .hero .hero-inner { margin-left: auto !important; margin-right: auto !important; }
+}
+
+/* 8) During page-enter animations, never expand layout bounds */
+header.lp-header, main > section, footer.lp-footer, #sticky-free-estimate {
+  contain: paint; /* transforms/blur won't create a phantom overflow box */
+}
+
+/* 9) Ultra-narrow phones (optional): allow quotes to wrap instead of forcing a super-wide line */
+@media (max-width: 360px){
+  .review-flywheel .rf-quote { white-space: normal; }
+}
+
+/* === GRID SHRINK-FIX — stop hero/flywheel from pushing page width on mobile ========
+   Explanation: CSS Grid items default to min-width:auto; our no-wrap flywheel content
+   made .hero-copy refuse to shrink, causing rightward overflow. Set min-width:0 on
+   the grid container *and* its direct children so they can shrink within the viewport.
+===================================================================================== */
+@supports (display: grid){
+  .hero .hero-inner,
+  .hero .hero-inner > *{
+    min-width: 0 !important;   /* critical: allow shrinking within the grid track */
+    max-width: 100% !important; /* never exceed container width */
+    box-sizing: border-box;
+  }
+  /* Ensure the track itself can't influence page width */
+  .review-flywheel .rf-track{
+    overflow: hidden !important;
+    contain: layout paint;      /* isolate layout/paint from the rest of the page */
+    max-width: 100% !important;
+  }
+}
+
+/* Extra safety for very small phones: allow quotes to wrap instead of forcing a mega line */
+@media (max-width: 400px){
+  .review-flywheel .rf-quote{ white-space: normal !important; }
+}

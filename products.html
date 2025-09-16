@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Products — Endura Roofing</title>
+  <meta name="description" content="Browse premium roofing and exterior systems. Standing seam, ribbed steel, architectural shingles, soffit/fascia, and metal siding." />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Base styles from your LP -->
+  <link rel="stylesheet" href="endura_lp.css">
+  <!-- Page-specific enhancements -->
+  <link rel="stylesheet" href="products.css">
+
+  <link rel="preload" as="image" href="assets/endura_logo.png" />
+</head>
+<body class="dark">
+  <!-- Dynamic background (drifts via endura_lp.js) -->
+  <div aria-hidden="true" class="bg"></div>
+
+  <header class="lp-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img class="logo" src="assets/endura_logo.png" alt="Endura Roofing logo" height="140" width="360" />
+        <span class="brand-text">ENDURA ROOFING</span>
+      </a>
+      <nav class="header-right" aria-label="Primary">
+        <a class="button button-ghost" href="/">Home</a>
+        <a class="button button-ghost" href="tel:+17059037663">Call (705) 903‑7663</a>
+        <!-- Free Estimate now routes cross-page with ?id=estimate -->
+        <a class="button button-primary" href="https://enduraroofing.ca/?id=estimate">Free Estimate</a>
+      </nav>
+    </div>
+    <div class="progress" aria-hidden="true"><span></span></div>
+  </header>
+
+  <main id="main">
+    <!-- MICRO-HERO (tight) -->
+    <section class="section hero product-hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1><span class="accent">Premium</span> Roofing & Exteriors</h1>
+          <p class="sub">Architectural systems. Clean lines. Built to last.</p>
+          <div class="hero-ctas">
+            <a class="button button-primary button-lg" href="#catalog">See Products</a>
+          </div>
+        </div>
+        <!-- Keep media for desktop ambience; auto-hidden on mobile -->
+        <div class="hero-media">
+          <div class="parallax-wrap" data-parallax>
+            <img class="parallax-img" src="assets/Standing%20Seam%201.jpg" alt="Standing seam roof close-up" width="880" height="560" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY FILTERS -->
+    <section class="section filters" aria-label="Filters">
+      <div class="container">
+        <div class="filter-bar">
+          <div class="filter-title">Filter:</div>
+          <div class="chips" role="tablist" aria-label="Product categories">
+            <button class="chip is-active" role="tab" aria-selected="true" data-filter="all">All</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="metal">Metal Roofing</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="shingle">Shingles</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="exterior">Soffit / Fascia / Siding</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section class="section catalog" id="catalog">
+      <div class="container product-grid">
+        <!-- Standing Seam -->
+        <article class="product-card tilt" tabindex="0"
+          data-id="standing-seam"
+          data-name="Standing Seam Metal Roofing"
+          data-type="metal"
+          data-image="assets/Standing%20Seam%201.jpg"
+          data-fasteners="Concealed"
+          data-longevity="50+ years"
+          data-warranty="40‑yr paint + 10‑yr workmanship"
+          data-gauge="Steel/Aluminum, 24–26 ga"
+          data-look="Modern, crisp vertical seams"
+          data-bestfor="Ultimate performance & clean architectural lines"
+          data-finishes="Matte, Textured, High‑Gloss"
+          data-animate
+        >
+          <div class="product-media">
+            <img src="assets/Standing%20Seam%201.jpg" alt="Standing seam metal roofing — install detail" />
+            <span class="pill pill-blue">Best Seller</span>
+          </div>
+          <div class="product-body">
+            <h3>Standing Seam Metal Roofing</h3>
+            <p class="sub">Architectural‑grade panel system with concealed fasteners. The benchmark for longevity and aesthetics.</p>
+            <ul class="specs">
+              <li>Concealed fasteners</li>
+              <li>Premium paint system</li>
+              <li>Engineered for harsh weather</li>
+            </ul>
+            <div class="card-actions">
+              <button class="button button-primary js-quick-view">Quick View</button>
+              <a class="button button-ghost" href="https://enduraroofing.ca/?id=estimate">Get Estimate</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ribbed Steel -->
+        <article class="product-card tilt" tabindex="0"
+          data-id="ribbed-steel"
+          data-name="Ribbed Steel Metal Roofing"
+          data-type="metal"
+          data-image="assets/Ribbed%20Steel.jpg"
+          data-fasteners="Exposed (engineered layout)"
+          data-longevity="40–50 years"
+          data-warranty="40‑yr paint + 10‑yr workmanship"
+          data-gauge="Steel, 28–29 ga options"
+          data-look="Bold ribbed profile, rugged utility"
+          data-bestfor="Cost‑efficient durability and fast installs"
+          data-finishes="Textured, Matte"
+          data-animate
+        >
+          <div class="product-media">
+            <img src="assets/Ribbed%20Steel.jpg" alt="Ribbed steel metal roof profile" />
+            <span class="pill">Great Value</span>
+          </div>
+          <div class="product-body">
+            <h3>Ribbed Steel Metal Roofing</h3>
+            <p class="sub">Proven corrugated profile for a clean, tough aesthetic—excellent performance at a friendly price point.</p>
+            <ul class="specs">
+              <li>Exposed fasteners</li>
+              <li>High‑strength rib geometry</li>
+              <li>Reliable weather defense</li>
+            </ul>
+            <div class="card-actions">
+              <button class="button button-primary js-quick-view">Quick View</button>
+              <a class="button button-ghost" href="https://enduraroofing.ca/?id=estimate">Get Estimate</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Asphalt Shingles -->
+        <article class="product-card tilt" tabindex="0"
+          data-id="asphalt-shingles"
+          data-name="Asphalt Shingles"
+          data-type="shingle"
+          data-image="assets/Shingle.jpg"
+          data-fasteners="Nailed with proper pattern"
+          data-longevity="20–30+ years (architectural)"
+          data-warranty="Manufacturer warranty + 10‑yr workmanship"
+          data-gauge="N/A"
+          data-look="Dimensional architectural texture"
+          data-bestfor="Traditional look with strong value"
+          data-finishes="Architectural blends"
+          data-animate
+        >
+          <div class="product-media">
+            <img src="assets/Shingle.jpg" alt="Architectural asphalt shingle ridge detail" />
+          </div>
+          <div class="product-body">
+            <h3>Asphalt Shingles</h3>
+            <p class="sub">Modern architectural shingles for a classic look. Great performance, strong value.</p>
+            <ul class="specs">
+              <li>Architectural profiles</li>
+              <li>Wind‑rated installs</li>
+              <li>Clean, tidy job sites</li>
+            </ul>
+            <div class="card-actions">
+              <button class="button button-primary js-quick-view">Quick View</button>
+              <a class="button button-ghost" href="https://enduraroofing.ca/?id=estimate">Get Estimate</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Soffit / Fascia -->
+        <article class="product-card tilt" tabindex="0"
+          data-id="soffit-fascia"
+          data-name="Soffit / Fascia"
+          data-type="exterior"
+          data-image="assets/soffit.jpg"
+          data-fasteners="Hidden, clean detail"
+          data-longevity="Decades"
+          data-warranty="Manufacturer + 10‑yr workmanship"
+          data-gauge="Aluminum systems"
+          data-look="Crisp eaves, continuous ventilation options"
+          data-bestfor="Finishing details that elevate curb appeal"
+          data-finishes="Smooth, Vented, Wood‑look"
+          data-animate
+        >
+          <div class="product-media">
+            <img src="assets/soffit.jpg" alt="Soffit and fascia detail under eaves" />
+          </div>
+          <div class="product-body">
+            <h3>Soffit / Fascia</h3>
+            <p class="sub">Flawless eaves with proper ventilation. The finishing details that make the whole home feel premium.</p>
+            <ul class="specs">
+              <li>Continuous vent options</li>
+              <li>Precision fabrication</li>
+              <li>Maintenance‑friendly</li>
+            </ul>
+            <div class="card-actions">
+              <button class="button button-primary js-quick-view">Quick View</button>
+              <a class="button button-ghost" href="https://enduraroofing.ca/?id=estimate">Get Estimate</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Metal Siding -->
+        <article class="product-card tilt" tabindex="0"
+          data-id="metal-siding"
+          data-name="Metal Siding"
+          data-type="exterior"
+          data-image="assets/metalsiding.jpg"
+          data-fasteners="Concealed (profile‑dependent)"
+          data-longevity="40–50+ years"
+          data-warranty="40‑yr paint + 10‑yr workmanship"
+          data-gauge="Steel/Aluminum options"
+          data-look="Vertical or horizontal modern lines"
+          data-bestfor="Modern facades with ultra‑low maintenance"
+          data-finishes="Matte, Textured, Wood‑look"
+          data-animate
+        >
+          <div class="product-media">
+            <img src="assets/metalsiding.jpg" alt="Modern metal siding on residential facade" />
+            <span class="pill">Architectural</span>
+          </div>
+          <div class="product-body">
+            <h3>Metal Siding</h3>
+            <p class="sub">Modern profiles for bold, maintenance‑light exteriors. Pairs beautifully with stone, glass, and wood.</p>
+            <ul class="specs">
+              <li>Architectural profiles</li>
+              <li>Precision trims</li>
+              <li>Wide finish options</li>
+            </ul>
+            <div class="card-actions">
+              <button class="button button-primary js-quick-view">Quick View</button>
+              <a class="button button-ghost" href="https://enduraroofing.ca/?id=estimate">Get Estimate</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Buying Tips -->
+    <section class="faq section">
+      <div class="container">
+        <header class="section-head"><h2>Buying Tips</h2></header>
+        <details>
+          <summary>Standing seam vs ribbed steel — which should I choose?</summary>
+          <p>Standing seam hides the fasteners for a hyper‑clean, long‑life aesthetic. Ribbed steel is rugged, proven, and cost‑efficient. Both are excellent—your home and goals decide the winner.</p>
+        </details>
+        <details>
+          <summary>Can you help me match siding and soffit to the roof?</summary>
+          <p>Yes. We’ll propose finish palettes that make the whole home feel cohesive and premium.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- No site footer on this page; keep a single, clear CTA -->
+  <div id="sticky-free-estimate" aria-label="Sticky Free Estimate" role="complementary">
+    <div class="wrap container">
+      <span class="scta-text">Have a project in mind?</span>
+      <a class="button button-primary" href="https://enduraroofing.ca/?id=estimate">Free Estimate</a>
+    </div>
+  </div>
+
+  <!-- Base LP interactions (gradient drift, parallax, etc.) -->
+  <script defer src="endura_lp.js"></script>
+  <!-- Page logic -->
+  <script defer src="products.js"></script>
+</body>
+</html>
