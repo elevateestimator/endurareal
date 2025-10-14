@@ -1,0 +1,298 @@
+:root{
+  /* Brand */
+  --accent:#0466b7;          /* primary Endura blue */
+  --accent-2:#25a4ff;        /* lighter blue for subtle gradients */
+  --brand-700:#111111;        /* headings (near-black) */
+  --brand-500:#222222;        /* body text */
+  --brand-400:#555555;        /* muted text */
+
+  /* UI (white theme) */
+  --bg:#ffffff;
+  --bg-alt:#f4f9ff;           /* very soft blue tint for alt sections */
+  --border:#e5effa;           /* subtle blue-tinted border */
+  --success:#16a34a;
+  --maxw:1200px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(2,8,23,.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--brand-500);
+  background:var(--bg);
+  line-height:1.6;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit; text-decoration:none}
+button{font:inherit; cursor:pointer}
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{left:0; top:0; width:auto; height:auto; background:#fff; padding:.5rem 1rem; z-index:9999; border:1px solid var(--border)}
+
+.container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+.section{padding:56px 0}
+.section--alt{background:linear-gradient(180deg, var(--bg-alt) 0%, #ffffff 100%)}
+
+.h1{font-size:clamp(2rem, 5vw, 3rem); line-height:1.2; color:var(--brand-700); margin:0 0 12px}
+.h2{font-size:clamp(1.5rem, 4vw, 2rem); color:var(--brand-700); margin:0 0 16px}
+.lead{font-size:1.125rem; color:var(--brand-400)}
+.accent{color:var(--accent)}
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5rem; padding:.85rem 1.1rem; border-radius:10px; border:1px solid transparent; box-shadow:var(--shadow);
+}
+.btn--primary{background:var(--accent); color:#fff}
+.btn--primary:hover{filter:brightness(1.05)}
+.btn--ghost{border-color:var(--border); background:#fff}
+.btn--outline{background:#fff; color:var(--accent); border-color:var(--accent)}
+.btnRow{display:flex; gap:12px; flex-wrap:wrap}
+
+/* Badges */
+.badges{display:flex; gap:10px; flex-wrap:wrap; padding:0; margin:12px 0 0; list-style:none}
+.badge{
+  background:#fff; border:1px solid var(--border); border-radius:999px;
+  padding:.35rem .65rem; font-size:.85rem; box-shadow:var(--shadow)
+}
+
+/* Grid + cards */
+.grid{display:grid; gap:20px}
+.grid--3{grid-template-columns:1fr}
+@media(min-width:768px){ .grid--3{grid-template-columns:repeat(3,1fr)} }
+
+.card{
+  background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow);
+}
+.card__body{padding:18px}
+.muted{color:var(--brand-400)}
+
+/* Header (white) */
+.header{
+  position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--border);
+  backdrop-filter:saturate(180%) blur(6px);
+}
+.header__wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800}
+.brand__img{height:28px; width:auto; display:block}
+.nav{display:flex; gap:16px; align-items:center}
+.header__phone{display:none; font-weight:600; padding:.35rem .6rem; border:1px solid var(--border); border-radius:10px; box-shadow:var(--shadow)}
+.nav a{padding:.35rem .5rem; border-radius:8px}
+.nav a:hover{background:var(--bg-alt)}
+
+.navToggle{padding:.45rem .7rem; border:1px solid var(--border); border-radius:10px; background:#fff}
+@media(min-width:900px){
+  .navToggle{display:none}
+  .nav{display:flex !important}
+  .nav[hidden]{display:flex !important} /* always visible on desktop */
+  .header__phone{display:block}
+}
+.header--scrolled{box-shadow:0 6px 24px rgba(2,8,23,.08)}
+
+/* Hero */
+.hero{padding-top:32px}
+.hero__grid{display:grid; gap:24px; align-items:center}
+@media(min-width:980px){ .hero__grid{grid-template-columns:1.1fr .9fr} }
+.hero__content{display:flex; flex-direction:column; gap:16px}
+
+/* Subtle blue mesh that still reads as white */
+.hero__art{
+  min-height:260px; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow);
+  background:
+    radial-gradient(120% 140% at 15% 20%, rgba(4,102,183,.18) 0%, rgba(4,102,183,0) 55%),
+    radial-gradient(120% 140% at 85% 15%, rgba(37,164,255,.14) 0%, rgba(37,164,255,0) 55%),
+    linear-gradient(135deg, #f7fbff 0%, #ffffff 60%);
+}
+@media(min-width:768px){ .hero__art{min-height:380px} }
+
+/* Services */
+.service{display:grid; grid-template-columns:auto 1fr; gap:8px}
+.service__icon{
+  display:flex; align-items:center; justify-content:center; width:56px;
+  background:var(--bg-alt); border-right:1px solid var(--border); color:var(--accent);
+}
+.service__title{margin:0 0 6px; color:var(--brand-700)}
+.service__link{display:inline-block; margin-top:8px; font-weight:600; color:var(--accent)}
+.service__link:hover{text-decoration:underline}
+
+/* Projects placeholders (light) */
+.ph{
+  width:100%; height:220px; background:
+    linear-gradient(45deg, #eaf3ff, #f8fbff),
+    repeating-linear-gradient(135deg, rgba(4,102,183,.06) 0 2px, transparent 2px 6px);
+}
+
+/* Testimonials */
+.stars{color:#f59e0b; margin:0 0 8px; letter-spacing:1px}
+
+/* Process */
+.process{display:grid; gap:16px; padding:0; margin:0}
+@media(min-width:768px){ .process{grid-template-columns:repeat(4,1fr)} }
+.process li{list-style:none; display:grid; grid-template-columns:auto 1fr; gap:10px}
+.process__num{
+  width:42px; height:42px; display:grid; place-items:center; font-weight:700;
+  border-radius:50%; background:var(--accent); color:#fff; margin:12px;
+}
+
+/* Service Area */
+.serviceArea{display:grid; gap:20px}
+@media(min-width:900px){ .serviceArea{grid-template-columns:1.1fr .9fr; align-items:center} }
+.serviceArea__list{
+  display:grid; gap:8px; grid-template-columns:repeat(2, minmax(0,1fr));
+  padding:0; margin:14px 0 0; list-style:none;
+}
+.serviceArea__map{
+  position:relative; min-height:260px; border-radius:var(--radius); border:1px solid var(--border);
+  background: radial-gradient(75% 75% at 50% 50%, #eaf3ff, #ffffff);
+  box-shadow:var(--shadow);
+}
+.pin{
+  position:absolute; width:12px; height:12px; background:var(--accent); border-radius:50%;
+  box-shadow:0 0 0 6px rgba(4,102,183,.18), 0 10px 20px rgba(2,8,23,.15);
+}
+
+/* Contact / CTA */
+.cta{display:grid; gap:20px}
+@media(min-width:980px){ .cta{grid-template-columns:1fr 1.2fr; align-items:start} }
+.cta__grid{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+.cta__grid label{display:flex; flex-direction:column; gap:6px; font-weight:600}
+.cta__grid input,.cta__grid textarea{
+  width:100%; padding:.75rem .9rem; border:1px solid var(--border); border-radius:10px; font-weight:400;
+}
+.cta__grid input:focus,.cta__grid textarea:focus{outline:2px solid #0466b7; outline-offset:1px}
+.span2{grid-column:1 / -1}
+.cta__actions{display:flex; gap:10px; align-items:center}
+.formStatus{min-height:24px; color:var(--success); font-weight:600}
+
+/* Footer */
+.footer__grid{display:grid; gap:20px}
+@media(min-width:900px){ .footer__grid{grid-template-columns:2fr 1fr 1fr 1fr} }
+.footer__logo{font-weight:800; margin-bottom:8px; color:var(--brand-700)}
+.footer__logoImg{height:22px; width:auto; vertical-align:middle; margin-right:8px}
+.footer__h{margin:0 0 10px; color:var(--brand-700)}
+.footer__list{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.footer__legal{border-top:1px solid var(--border); padding-top:14px; margin-top:14px; color:var(--brand-400)}
+
+/* Sticky CTA (mobile only) */
+.stickyCta{
+  position:fixed; bottom:12px; left:50%; transform:translateX(-50%);
+  display:flex; gap:10px; background:#fff; border:1px solid var(--border);
+  box-shadow:var(--shadow); border-radius:999px; padding:8px; z-index:60;
+}
+.stickyCta__btn{padding:.6rem 1rem; border-radius:999px; border:1px solid var(--border)}
+.stickyCta__btn--primary{background:var(--accent); color:#fff; border-color:transparent}
+@media(min-width:900px){ .stickyCta{display:none} }
+/* === Header: bigger logo, no brand text next to it === */
+:root { --header-h: 64px; }
+@media (min-width: 900px) { :root { --header-h: 72px; } }
+
+.header__wrap { height: var(--header-h); }
+
+.brand__img{
+  height: 44px;           /* larger logo on mobile */
+  width: auto;
+  display: block;
+}
+@media (min-width: 900px){
+  .brand__img{ height: 52px; }  /* larger on desktop */
+}
+
+/* Hide any leftover brand text span if still present in DOM */
+.brand__text{ display: none !important; }
+
+/* === Mobile nav: compress to a clean panel === */
+/* Use your existing JS toggle: body.nav-open + hidden attribute handling */
+@media (max-width: 899px){
+  /* Turn the nav into a vertical panel when opened */
+  .nav{
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 12px 20px 16px;
+    flex-direction: column;         /* stack vertically */
+    gap: 6px;
+    z-index: 60;
+  }
+  /* Improve tap targets and wrapping */
+  .nav a{
+    display: block;
+    padding: 12px 8px;
+    border-radius: 8px;
+  }
+  .nav .btn{ width: 100%; text-align: center; }  /* full-width CTA */
+
+  /* Prevent page behind from scrolling when panel is open */
+  body.nav-open{ overflow: hidden; }
+}
+
+/* Desktop remains horizontal */
+@media (min-width: 900px){
+  .nav a{ padding: .35rem .5rem; }
+}
+
+/* Optional: shorten the sticky mobile CTA so header feels roomier */
+.stickyCta__btn{ padding: .55rem .9rem; }
+/* === Bigger logo, no adjacent text === */
+:root { --header-h: 72px; }                 /* taller header to fit larger logo */
+@media (min-width: 900px){ :root { --header-h: 88px; } }
+
+.header__wrap{ height: var(--header-h) !important; position: relative; }
+.brand__img{ height: 56px; width: auto; display: block; }  /* ~2x your old 28px */
+@media (min-width: 900px){ .brand__img{ height: 72px; } }  /* larger on desktop */
+.brand__text{ display: none !important; }                  /* hide any leftover text */
+
+/* === Mobile dropdown nav (tap Menu to toggle) === */
+@media (max-width: 899px){
+  /* When shown (hidden attribute removed by JS), it's a dropdown panel */
+  .nav{
+    position: absolute;
+    top: 100%;                /* sits right under the header */
+    left: 0; right: 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    box-shadow: var(--shadow);
+    padding: 10px 12px 12px;
+    display: flex;            /* stack vertically */
+    flex-direction: column;
+    gap: 6px;
+    z-index: 60;
+  }
+  /* Respect the hidden attribute on mobile */
+  .nav[hidden]{ display: none !important; }
+
+  /* Better tap targets */
+  .nav a{
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .nav .btn{ width: 100%; text-align: center; }
+
+  /* Keep page from scrolling behind an open dropdown (your JS toggles nav-open) */
+  body.nav-open{ overflow: hidden; }
+}
+
+/* Desktop keeps original horizontal nav */
+@media (min-width: 900px){
+  .nav a{ padding: .35rem .5rem; }
+}
+/* --- Show hero image and crop nicely --- */
+.hero__art{ position:relative; overflow:hidden; background:none; }
+.hero__art img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* --- Give project images a consistent height like the old placeholders --- */
+.project-img{ width:100%; height:220px; object-fit:cover; display:block; }
+
+/* --- Remove the blue gradient behind the map, since we're embedding a real map --- */
+.serviceArea__map{ background:none; }
+.cta__grid input:focus,.cta__grid textarea:focus{outline:2px solid #0466b7; outline-offset:1px}
