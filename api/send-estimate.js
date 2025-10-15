@@ -7,8 +7,8 @@ export default async function handler(req, res) {
     const { name, phone, email, address, message } = data || {};
     if (!name || !phone) return res.status(400).json({ error: 'name & phone required' });
 
-    const from = 'info@enduraroofing.ca';     // verified Postmark sender
-    const toInternal = 'info@enduraroofing.ca';
+    const from = 'estimates@elevateestimator.com';     // verified Postmark sender
+    const toInternal = 'sales@enduraroofing.ca';
     const replyTo = email || undefined;
 
     await pmSend(process.env.POSTMARK_TOKEN, {
